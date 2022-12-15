@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-import Main from './components/Main';
+// import Main from './components/Main';
 import Hero from './components/Hero';
 import Card from './components/Card';
+import data from './data';
 
 function App() {
+
+
+  const cards = data.map(item => {
+    return (
+        <Card 
+            key={item.id}
+            img={item.coverImg}
+            rating={item.stats.rating}
+            reviewCount={item.stats.reviewCount}
+            location={item.location}
+            title={item.title}
+            price={item.price}
+        />
+    )
+})        
+
   return (
     <div className="App">
    
       <Navbar />
       {/* <Main /> */}
       <Hero />
-       <Card 
-                // img="katie-zaferes.png"
-                rating="5.0"
-                reviewCount={6}
-                country="USA"
-                title="Life Lessons with Katie Zaferes"
-                price={136}
-            />
+      <section  className="cards-list">
+      {cards}
+      </section>
+   
     </div>
   );
 }
